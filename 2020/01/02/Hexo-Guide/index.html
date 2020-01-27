@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Hexo+Github的博客搭建Node.js的配置下载首先登陆Node.js网站下载node.js,并安装在自己指定的路径。安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。接在cmd命令窗户输入 接着配置环境右键我的电脑，点击属性，在弹出的页面框中选中右下角的环境变量。 双击下面的系统变量的Path">
+<meta name="description" content="Hexo+Github的博客搭建 Node.js的配置 下载 首先登陆Node.js网站下载node.js,并安装在自己指定的路径。  安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。  接在cmd命令窗户输入  接着配置环境右键我的电脑，点击属性，在弹出的页面框中选中右下角的环境变量。  双击下面的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo Guide">
 <meta property="og:url" content="http://yoursite.com/2020/01/02/Hexo-Guide/index.html">
 <meta property="og:site_name" content="星云">
-<meta property="og:description" content="Hexo+Github的博客搭建Node.js的配置下载首先登陆Node.js网站下载node.js,并安装在自己指定的路径。安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。接在cmd命令窗户输入 接着配置环境右键我的电脑，点击属性，在弹出的页面框中选中右下角的环境变量。 双击下面的系统变量的Path">
+<meta property="og:description" content="Hexo+Github的博客搭建 Node.js的配置 下载 首先登陆Node.js网站下载node.js,并安装在自己指定的路径。  安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。  接在cmd命令窗户输入  接着配置环境右键我的电脑，点击属性，在弹出的页面框中选中右下角的环境变量。  双击下面的">
 <meta property="og:image" content="http://yoursite.com/2020/01/02/Hexo-Guide/js.png">
 <meta property="og:image" content="http://yoursite.com/2020/01/02/Hexo-Guide/js4.png">
 <meta property="og:image" content="http://yoursite.com/2020/01/02/Hexo-Guide/js3.png">
@@ -361,12 +361,29 @@
       
 
       
-        <h1 id="Hexo-Github的博客搭建"><a href="#Hexo-Github的博客搭建" class="headerlink" title="Hexo+Github的博客搭建"></a>Hexo+Github的博客搭建</h1><h2 id="Node-js的配置"><a href="#Node-js的配置" class="headerlink" title="Node.js的配置"></a>Node.js的配置</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>首先登陆<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>网站下载node.js,并安装在自己指定的路径。<br><img src="/2020/01/02/Hexo-Guide/js.png" alt="js"><br>安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。<br><img src="/2020/01/02/Hexo-Guide/js4.png" alt="js4"><br>接在cmd命令窗户输入<br><img src="/2020/01/02/Hexo-Guide/js3.png" alt="js3"></p>
-<p>接着配置环境右键<strong>我的电脑</strong>，点击<strong>属性</strong>，在弹出的页面框中选中右下角的<strong>环境变量</strong>。<br><img src="/2020/01/02/Hexo-Guide/js1.png" alt="js1"></p>
-<p>双击下面的<strong>系统变量</strong>的Path，分别将【nodejs】、【node.js\node_global\node_modules】文件夹加入变量值在键盘上按下【win+R】,输入cmd，回车，打开cmd窗口，输入<strong>node -v</strong>,显示Node.js的版本说明安装成功。输入<strong>npm -v</strong>，显示npm的版本说明安装成功。<br><img src="/2020/01/02/Hexo-Guide/js2.png" alt="js2"></p>
-<h2 id="Hexo的配置"><a href="#Hexo的配置" class="headerlink" title="Hexo的配置"></a>Hexo的配置</h2><h3 id="Git的配置"><a href="#Git的配置" class="headerlink" title="Git的配置"></a>Git的配置</h3><p>首先登陆<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>网站上下载git，安装成功单击鼠标右键会出现两个新选项【Git GUI here】【Git Bash here】。</p>
-<h3 id="Hexo的配置-1"><a href="#Hexo的配置-1" class="headerlink" title="Hexo的配置"></a>Hexo的配置</h3><p>首先在合适位置右键鼠标，选择【Git Bash here】，调出<strong>Terminal</strong>,输入<code>npm install -g hexo-cli</code>安装Hexo。安装完后，输入<code>mkdir Blog</code>,新建一个叫Blog的文件夹，接下来的操作都在这个文件夹里面进行，出错可以全部删掉重来。接着继续输入<code>cd Blog</code>进入文件夹，接着使用命令<code>hexo init</code>来初始化Hexo。<img src="/2020/01/02/Hexo-Guide/js6.png" alt="js6">\</p>
-<h3 id="Github的配置"><a href="#Github的配置" class="headerlink" title="Github的配置"></a>Github的配置</h3><p>这里已经搭好了Hexo，先进入自己的Github首页，点击自己右上角的加号，选择<code>New repository</code>，在Repository里面为自己的仓库命名为<code>自己名字.github.io</code>，这个就是后面作为博客登陆的地址。<br><img src="/2020/01/02/Hexo-Guide/js7.png" alt="js7"><br>这样就配置好了Github。<br>接着回到自己的Blog,这里点开Blog文件夹下的<code>_config.yml</code>的文件进行配置。首先在最下面加上</p>
+        <h1>Hexo+Github的博客搭建</h1>
+<h2 id="Node-js的配置">Node.js的配置</h2>
+<h3 id="下载">下载</h3>
+<p>首先登陆<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>网站下载node.js,并安装在自己指定的路径。<br>
+<img src="/2020/01/02/Hexo-Guide/js.png" alt="js"><br>
+安装完后需要配置变量，首先在nodejs文件夹下新建两个文件夹【node_cache】【node_gloabal】，分别存储缓存文件和全局的模块。<br>
+<img src="/2020/01/02/Hexo-Guide/js4.png" alt="js4"><br>
+接在cmd命令窗户输入<br>
+<img src="/2020/01/02/Hexo-Guide/js3.png" alt="js3"></p>
+<p>接着配置环境右键<strong>我的电脑</strong>，点击<strong>属性</strong>，在弹出的页面框中选中右下角的<strong>环境变量</strong>。<br>
+<img src="/2020/01/02/Hexo-Guide/js1.png" alt="js1"></p>
+<p>双击下面的<strong>系统变量</strong>的Path，分别将【nodejs】、【node.js\node_global\node_modules】文件夹加入变量值在键盘上按下【win+R】,输入cmd，回车，打开cmd窗口，输入<strong>node -v</strong>,显示Node.js的版本说明安装成功。输入<strong>npm -v</strong>，显示npm的版本说明安装成功。<br>
+<img src="/2020/01/02/Hexo-Guide/js2.png" alt="js2"></p>
+<h2 id="Hexo的配置">Hexo的配置</h2>
+<h3 id="Git的配置">Git的配置</h3>
+<p>首先登陆<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>网站上下载git，安装成功单击鼠标右键会出现两个新选项【Git GUI here】【Git Bash here】。</p>
+<h3 id="Hexo的配置-2">Hexo的配置</h3>
+<p>首先在合适位置右键鼠标，选择【Git Bash here】，调出<strong>Terminal</strong>,输入<code>npm install -g hexo-cli</code>安装Hexo。安装完后，输入<code>mkdir Blog</code>,新建一个叫Blog的文件夹，接下来的操作都在这个文件夹里面进行，出错可以全部删掉重来。接着继续输入<code>cd Blog</code>进入文件夹，接着使用命令<code>hexo init</code>来初始化Hexo。<img src="/2020/01/02/Hexo-Guide/js6.png" alt="js6">\</p>
+<h3 id="Github的配置">Github的配置</h3>
+<p>这里已经搭好了Hexo，先进入自己的Github首页，点击自己右上角的加号，选择<code>New repository</code>，在Repository里面为自己的仓库命名为<code>自己名字.github.io</code>，这个就是后面作为博客登陆的地址。<br>
+<img src="/2020/01/02/Hexo-Guide/js7.png" alt="js7"><br>
+这样就配置好了Github。<br>
+接着回到自己的Blog,这里点开Blog文件夹下的<code>_config.yml</code>的文件进行配置。首先在最下面加上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: github仓库网址地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>然后在Terminal上依次运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
@@ -545,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Github的博客搭建"><span class="nav-number">1.</span> <span class="nav-text">Hexo+Github的博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js的配置"><span class="nav-number">1.1.</span> <span class="nav-text">Node.js的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo的配置"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">Git的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo的配置-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Hexo的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github的配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">Github的配置</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Hexo+Github的博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js的配置"><span class="nav-number">1.1.</span> <span class="nav-text">Node.js的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo的配置"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">Git的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo的配置-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">Hexo的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github的配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">Github的配置</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
