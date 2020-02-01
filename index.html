@@ -266,6 +266,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/MAYA-%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/01/MAYA-%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/" itemprop="url">MAYA 入门（2）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-01T22:35:44+08:00">
+                2020-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1>MAYA入门 (2) 层次结构</h1>
+<h2 id="大纲视图-outline">大纲视图(outline)</h2>
+<p>MAYA的大纲视图以<strong>大纲形式</strong>显示场景中所有对象的层次列表。</p>
+<h3 id="查看大纲">查看大纲</h3>
+<ul>
+<li>窗口–&gt;大纲视图</li>
+<li>切换成两列面板布局，然后面板–&gt;面板–&gt;大纲视图</li>
+</ul>
+<h3 id="操作大纲">操作大纲</h3>
+<p>同事选中多个大纲的对象有两种方向：<br></p>
+<ul>
+<li>按Shift可在大纲视图中选择<strong>连续位置</strong>的多个对象</li>
+<li>按Ctrl可在大纲视图选择<strong>任意位置</strong>的多个对象<br></li>
+</ul>
+<p>需要拖动对象时，按住鼠标中键并拖动列表中的目标项，<strong>单线</strong>表示移动，<strong>框线</strong>表示包含，即作为被拖入的对象的<strong>子对象</strong><br></p>
+<center>
+显示与隐藏
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H</td>
+<td>隐藏</td>
+</tr>
+<tr>
+<td>Shift+H</td>
+<td>显示</td>
+</tr>
+</tbody>
+</table>
+</center>
+<h2 id="组">组</h2>
+<p>MAYA的组也是一个很好的形成层次结构的方法，打组既是将需要关联的物体放在一起，方便选择。</p>
+<center>
+<p>组操作</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+G</td>
+<td>创建组</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>解组</td>
+</tr>
+</tbody>
+</table>
+</center>
+<h2 id="Hypergraph面板">Hypergraph面板</h2>
+<p>Hypergraph和Outline功能相似，但是Hypergrpah使用与场景类似的超文本的视图，在复杂的场景中比Outline有效。</p>
+<h3 id="查看Hypergraph">查看Hypergraph</h3>
+<p>窗口–&gt;常规编译器–&gt;Hypergraph层次/链接<br></p>
+<center>
+层次操作
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+鼠标中键</td>
+<td>移动</td>
+</tr>
+<tr>
+<td>Alt+鼠标右键</td>
+<td>相机轨迹</td>
+</tr>
+</tbody>
+</table>
+<p>显示和隐藏</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl+H</td>
+<td>隐藏当前选项</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+H</td>
+<td>显示最后一次隐藏</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p><code>可以切换自由形式进行修改层次</code></p>
+<h2 id="图层">图层</h2>
+<p>跟PS的图层类似，MAYA的图层也提供了很好的管理层次结构。<br></p>
+<h3 id="创建图层">创建图层</h3>
+<p>创建图层一般有两种方法,第一种方法是将选中物体形成图层，而第二种方法是创造一个空白图层。<br></p>
+<ul>
+<li>通道盒/层编辑器-&gt;层-&gt;从选定对象创建层</li>
+<li>通道盒/层编辑器-&gt;层-&gt;空白层<br></li>
+</ul>
+<p>图层选项如下图:<br><br>
+<img src="/2020/02/01/MAYA-%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/M1.png" alt="M1"></p>
+<table>
+<thead>
+<tr>
+<th>图标字幕</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V</td>
+<td>物体可视</td>
+</tr>
+<tr>
+<td>P</td>
+<td>可见播放</td>
+</tr>
+<tr>
+<td>T</td>
+<td>线框表示</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/27/MAYA-%E5%85%A5%E9%97%A81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,7 +592,7 @@
       
         
           
-            <h1>MAYA入门(1)</h1>
+            <h1>MAYA入门 (1) 基本操作</h1>
 <h2 id="导航篇">导航篇</h2>
 <center>
 <p><strong>在单视图模式使用</strong></p>
@@ -430,6 +685,7 @@
 </tr>
 </tbody>
 </table>
+<br>
 <table>
 <thead>
 <tr>
@@ -450,12 +706,41 @@
 <td>R</td>
 <td>缩放</td>
 </tr>
+<tr>
+<td>F</td>
+<td>居中放大被选中的物体</td>
+</tr>
 </tbody>
 </table>
 </center>
 <ul>
 <li>旋转轴： 红色X、蓝色Z、绿色Y</li>
 <li>软选择：根据比重按比例移动</li>
+</ul>
+<br>
+<center>
+<p><strong>复制</strong></p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+D后移动</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>Shift+D按着复制</td>
+<td>移动复制</td>
+</tr>
+</tbody>
+</table>
+</center>
+<ul>
+<li>特殊复制可以进行复制变换，形成阵列。</li>
 </ul>
 <br>
 <h2 id="枢轴点">枢轴点</h2>
@@ -466,6 +751,7 @@
 <li>Q选择对象 --&gt; D移动和旋转枢轴</li>
 </ul>
 <h2 id="热箱篇">热箱篇</h2>
+<center>
 <table>
 <thead>
 <tr>
@@ -484,7 +770,9 @@
 </tr>
 </tbody>
 </table>
+</center>
 <p><code>*径向菜单可以使用定点、边、面、对象等方法</code></p>
+<h1></h1>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">枢轴点是 3d 空间中的一个特定位置,用作对象变换的参照,所有对象(曲线、曲面、组)都具有枢轴点。</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
           
         
@@ -939,7 +1227,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
