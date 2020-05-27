@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="事件 使用委托的时候，通常会出现两个角色：reporter和poster。 reporter &amp; poster reporter这个类型包含一个委托字段，reporter通过调用委托来决定什么时候进行post。 poster是方法目标的接受者，poster可以决定何时开始或结束监听，方式是通过在委托中调用+&#x3D;和-&#x3D;。 一个poster不知道并不干扰其他poster。 Event 事件 事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件">
+<meta property="og:url" content="http://yoursite.com/2020/05/27/%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="星云">
+<meta property="og:description" content="事件 使用委托的时候，通常会出现两个角色：reporter和poster。 reporter &amp; poster reporter这个类型包含一个委托字段，reporter通过调用委托来决定什么时候进行post。 poster是方法目标的接受者，poster可以决定何时开始或结束监听，方式是通过在委托中调用+&#x3D;和-&#x3D;。 一个poster不知道并不干扰其他poster。 Event 事件 事件">
+<meta property="article:published_time" content="2020-05-27T14:03:00.000Z">
+<meta property="article:modified_time" content="2020-05-27T15:22:45.603Z">
+<meta property="article:author" content="Frank">
+<meta property="article:tag" content="c#">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/27/事件/"/>
+
+
+
+
+
+  <title>事件 | 星云</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/%E4%BA%8B%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星云">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">事件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T22:03:00+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">C#基本语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>事件</h1>
+<p>使用委托的时候，通常会出现两个角色：reporter和poster。</p>
+<h2 id="reporter-poster">reporter &amp; poster</h2>
+<p>reporter这个类型包含一个委托字段，reporter通过调用委托来决定什么时候进行post。<br>
+poster是方法目标的接受者，poster可以决定何时开始或结束监听，方式是通过在委托中调用+=和-=。<br>
+一个poster不知道并不干扰其他poster。</p>
+<h2 id="Event-事件">Event 事件</h2>
+<p>事件就是将上述模式正式化的一个语言特性。<br>
+事件是一种结构，为了实现reporter/poster模型，它只暴露了所需要的委托特性的部分子集。<br>
+事件的主要目的为了防止poster之间的干扰。</p>
+<h3 id="声明事件">声明事件</h3>
+<p>最简单的声明方式在委托前加入Event。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明委托</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">PriceChangedHandler</span>(<span class="params"><span class="keyword">decimal</span> old Price, <span class="keyword">decimal</span> new Price</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Broadcaster类型里的代码拥有对 PriceChangedHandle的完全访问权，可以当做委托</span></span><br><span class="line"><span class="comment">//而Broadcaster类型外的代码只能对PriceChangedHandle这个event执行+=或-=操作</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Broadcaster</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//事件声明</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">event</span>  PriceChangedHandler PriceChanged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="事件如何工作">事件如何工作</h3>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Broadcaster</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">event</span> PriceChangehandler PriceChange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，编译器把事件的声明翻译成类似下面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;代码由两部分组成，首先是私有的委托，然后是Event属性。有两个方法：add和remove</span><br><span class="line">&#x2F;&#x2F;编译器会查看Broadcaster类型内部对PriceChange的类型的引用，若不是下面两个方法的操作，就直接把他们定向到底层的委托字段PriceChange</span><br><span class="line">&#x2F;&#x2F;编译器会将作用在event上的+&#x3D;和-&#x3D;操作翻译成调用add和remove访问器</span><br><span class="line">PriceChangehandler PriceChange;&#x2F;&#x2F;private delegate</span><br><span class="line">public event PriceChangehandler PriceChange</span><br><span class="line">&#123;</span><br><span class="line">	add &#123;PriceChange +&#x3D; value;&#125;</span><br><span class="line">	remove&#123;PriceChange -&#x3D; value;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现事件">实现事件</h2>
+<h3 id="标准的事件模式">标准的事件模式</h3>
+<p>为了编写事件，.NET定义了一个标准的模式:<br>
+首先有一个预定义的框架类:System.EventArgs，这里类除了静态的Empty属性之外，它没有其他成员.<br>
+接着是一个作为事件传递信息的类的父类：EventArgs</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class PriceChangeEventArgs : System.EventArgs</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">decimal</span> LastPrice;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">decimal</span> NewPrice;</span><br><span class="line">	<span class="comment">//传递信息的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PriceChangeEventArgs</span>(<span class="params"><span class="keyword">decimal</span> lastPrice, <span class="keyword">decimal</span> newPrice</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		LastPrice = lastPrice;</span><br><span class="line">		newPrice = newPrice;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通常是根据所含有的信息进行命名，而不是所使用的事件<br>
+通常通过属性或只读字段来暴露数据</p>
+<h3 id="为事件选择或定义委托">为事件选择或定义委托</h3>
+<p>委托返回类型是void<br>
+可以接受两个参数，第一个参数是object，表示事件的reporter；第二个参数类型是EventArgs的子类，包含需要传递的信息<br>
+名称必须以EventHandler结尾</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Framework定义了一个泛型委托System.EventHandler&lt;T&gt;,它满足上述规则。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> EventHandler&lt;TEventArgs&gt;</span><br><span class="line">(<span class="keyword">object</span> source, TEventArgs e) <span class="keyword">where</span> TEventArgs: EventArgs;</span><br></pre></td></tr></table></figure>
+<h3 id="针对选择的委托定义事件">针对选择的委托定义事件</h3>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Stock</span></span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">event</span> EventHandler&lt;PriceChangeEventArgs&gt; PriceChanged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="可触发事件的方法">可触发事件的方法</h3>
+<p>方法名必须和事件一致，前面再加上On，接受一个EventArgs参数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Stock</span></span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">event</span> EventHandler&lt;PriceChangeEventArgs&gt; PriceChanged;</span><br><span class="line">	<span class="function">protect <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">OnPriceChange</span>(<span class="params">&lt;PriceChangeEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">if</span>( PriceChanged != <span class="literal">null</span>) priceChanged(<span class="keyword">this</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整例子</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PriceChangeEventArgs</span>: <span class="title">EventArgs</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//暴露给外部的方法</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">decimal</span> LastPrice;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">decimal</span> NewPrice;</span><br><span class="line">	<span class="comment">//传递信息的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PriceChangeEventArgs</span>(<span class="params"><span class="keyword">decimal</span> lastPrice, <span class="keyword">decimal</span> newPrice</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		LastPrice = lastPrice;</span><br><span class="line">		newPrice = newPrice;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Stock</span> <span class="comment">//reporter</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">string</span> symbol;</span><br><span class="line">	<span class="keyword">decimal</span> price;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Stock</span>(<span class="params"><span class="keyword">string</span> symbol</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">this</span>.symbol = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//声明事件</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">event</span> EventHandler&lt;PriceChangeEventArgs&gt; PriceChanged;</span><br><span class="line">	<span class="comment">//触发事件的方法 使用this因为Stock是reporter</span></span><br><span class="line">	<span class="function">protect <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">OnPriceChange</span>(<span class="params">&lt;PriceChangeEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">if</span>( PriceChanged != <span class="literal">null</span>) priceChanged(<span class="keyword">this</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">decimal</span> Price</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">get</span>&#123;<span class="keyword">return</span> price;&#125;</span><br><span class="line">		<span class="keyword">set</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(price == <span class="keyword">value</span>)<span class="keyword">return</span>;</span><br><span class="line">			<span class="keyword">decimal</span> oldPrice = price;</span><br><span class="line">			price = <span class="keyword">value</span>;</span><br><span class="line">			OnPriceChanged(<span class="keyword">new</span> PriOnPriceChangedEventArgs(oldPrice, price));<span class="comment">//传递信息</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		Stock stock = <span class="keyword">new</span> Stick(<span class="string">"MSFT"</span>);</span><br><span class="line">		<span class="comment">//此时PriceChanged为null</span></span><br><span class="line">		stock.Price = <span class="number">120</span>;</span><br><span class="line">		<span class="comment">//添加方法</span></span><br><span class="line">		stock.PriceChange += stock_PriceChanged;</span><br><span class="line">		<span class="comment">//触发OnPriceChanged方法</span></span><br><span class="line">		stock.Price = <span class="number">135</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">stock_PriceChanged</span>(<span class="params"><span class="keyword">object</span> sender, PriceChangeEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">if</span>((e.NewPrice - e.Lastprice) / e.LastPrice &gt; <span class="number">0.1</span>M)</span><br><span class="line">		&#123;</span><br><span class="line">			Console.WriteLine(<span class="string">"Alert, 10% stock price increase"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注意">注意</h2>
+<p>在多线程的场景下，你需要在测试或调用前，把委托赋给一个临时变量，来边线程安全相关的错误</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = PriceChanged;</span><br><span class="line"><span class="keyword">if</span>(temp != <span class="literal">null</span>)temp(<span class="keyword">this</span>.e);</span><br></pre></td></tr></table></figure>
+<h2 id="事件访问器">事件访问器</h2>
+<p>事件访问器是事件的+=和-=函数的实现。<br>
+<code>public event EventHandeler PriceChange;</code><br>
+编译器会把它转换为：</p>
+<ul>
+<li>一个私有的委托子弹</li>
+<li>一对公共的事件访问器函数，这两个函数的实现会把+=和-=操作交给私有的委托字段<br>
+也可以显式的定义事件访问器</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> EventHandler priceChange;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> Eventhandler PriceChange</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">add</span>&#123;PriceChange += <span class="keyword">value</span>;&#125;</span><br><span class="line">	<span class="keyword">remove</span>&#123;PriceChange -= <span class="keyword">value</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/27/%E6%B3%9B%E5%9E%8B/" rel="next" title="泛型">
+                <i class="fa fa-chevron-left"></i> 泛型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Frank</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+           
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=22722861&auto=0&height=66"></iframe>
+           </div>
+            
+          
+          
+
+          
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reporter-poster"><span class="nav-number">1.1.</span> <span class="nav-text">reporter &amp; poster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-事件"><span class="nav-number">1.2.</span> <span class="nav-text">Event 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明事件"><span class="nav-number">1.2.1.</span> <span class="nav-text">声明事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件如何工作"><span class="nav-number">1.2.2.</span> <span class="nav-text">事件如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现事件"><span class="nav-number">1.3.</span> <span class="nav-text">实现事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标准的事件模式"><span class="nav-number">1.3.1.</span> <span class="nav-text">标准的事件模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为事件选择或定义委托"><span class="nav-number">1.3.2.</span> <span class="nav-text">为事件选择或定义委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#针对选择的委托定义事件"><span class="nav-number">1.3.3.</span> <span class="nav-text">针对选择的委托定义事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可触发事件的方法"><span class="nav-number">1.3.4.</span> <span class="nav-text">可触发事件的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">1.4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件访问器"><span class="nav-number">1.5.</span> <span class="nav-text">事件访问器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">11.8k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
