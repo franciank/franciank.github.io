@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="星云">
 <meta property="og:description" content="公共Mono模块 意义 公共Mono模块的作用在与让没有继承Mono的类可以开启协程，可以Update更新，统一管理Update 代码 123456789101112131415161718192021222324252627282930313233343536373839&#x2F;&#x2F;&#x2F; &lt;summary&gt;&#x2F;&#x2F;&#x2F; Mono的管理者&#x2F;&#x2F;&#x2F; 1.生命周期函数&#x2F;&#x2F;&#x2F; 2.事件&#x2F;&#x2F;&#x2F; 3.协程&#x2F;&#x2F;&#x2F;">
 <meta property="article:published_time" content="2020-05-22T07:46:23.000Z">
-<meta property="article:modified_time" content="2020-05-27T15:34:37.000Z">
+<meta property="article:modified_time" content="2020-06-10T09:33:40.571Z">
 <meta property="article:author" content="Frank">
 <meta property="article:tag" content="C#">
 <meta property="article:tag" content="Unity">
@@ -354,7 +354,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  498
+                  514
                 </span>
               
 
@@ -400,63 +400,8 @@
 <p>由于我们的MonoController函数继承的是MonoBehaviour类，最终需要挂载到Unity场景中的空物体中，而调用则需要使用Find（）函数再调用函数中的方法，过于繁琐。<br>
 在之前的模块中，都是单例模式，因此可以创建一个单例模式的Mono管理模块进行管理MonoController函数，当需要调用的时候只需要调用管理类函数，而不需要挂载函数。</p>
 <h2 id="代码-2">代码</h2>
-<p>·```C#<br>
-/// <summary><br>
-/// 1.可以提供给外部添加 帧更新事件的方法<br>
-/// 2.可以提供给外部添加 协程的方法<br>
-/// </summary><br>
-public class MonoMgr : Base<MonoMgr><br>
-{<br>
-private MonoController controller;</MonoMgr></p>
-<pre><code>public MonoMgr()
-{
-    //保证MonoController对象的唯一性
-    GameObject obj = new GameObject(&quot;MonoController&quot;);
-    obj.AddComponent&lt;MonoController&gt;();//添加组件 只会进入一次
-}
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 1.可以提供给外部添加 帧更新事件的方法</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 2.可以提供给外部添加 协程的方法</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">public class MonoMgr : Base&lt;MonoMgr&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> MonoController controller;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MonoMgr</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">//保证MonoController对象的唯一性</span></span><br><span class="line">        GameObject obj = <span class="keyword">new</span> GameObject(<span class="string">"MonoController"</span>);</span><br><span class="line">        obj.AddComponent&lt;MonoController&gt;();<span class="comment">//添加组件 只会进入一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 给外部提供的 添加帧更新事件的函数</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="fun"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddUpdateListener</span>(<span class="params">UnityAction fun</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        controller.AddUpdateListener(fun);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 提供给外部 用于移除帧更新事件函数</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="fun"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveUpdateListener</span>(<span class="params">UnityAction fun</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        controller.RemoveUpdateListener(fun);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumerator routine</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> controller.StartCoroutine(routine);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="keyword">string</span> methodName, [DefaultValue(<span class="string">"null"</span></span>)] <span class="keyword">object</span> <span class="keyword">value</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> controller.StartCoroutine(methodName, <span class="keyword">value</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="keyword">string</span> methodName</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> controller.StartCoroutine(methodName);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StopAllCoroutines</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        controller.StopAllCoroutines();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-/// &lt;summary&gt;
-/// 给外部提供的 添加帧更新事件的函数
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;fun&quot;&gt;&lt;/param&gt;
-public void AddUpdateListener(UnityAction fun)
-{
-    controller.AddUpdateListener(fun);
-
-
-}
-
-/// &lt;summary&gt;
-/// 提供给外部 用于移除帧更新事件函数
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;fun&quot;&gt;&lt;/param&gt;
-public void RemoveUpdateListener(UnityAction fun)
-{
-    controller.RemoveUpdateListener(fun);
-}
-
-public Coroutine StartCoroutine(IEnumerator routine)
-{
-    return controller.StartCoroutine(routine);
-}
-
-public Coroutine StartCoroutine(string methodName, [DefaultValue(&quot;null&quot;)] object value)
-{
-    return controller.StartCoroutine(methodName, value);
-}
-
-public Coroutine StartCoroutine(string methodName)
-{
-    return controller.StartCoroutine(methodName);
-}
-
-public void StopAllCoroutines()
-{
-    controller.StopAllCoroutines();
-}
-</code></pre>
-<p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     
